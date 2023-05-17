@@ -2,13 +2,13 @@ import os
 import pickle                   # To put the data into a file
 
 import cv2
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
+import numpy as np
 
 # For the progress bar
 from tqdm import tqdm
 
-from . import *
-from .process import process_img
+from . import DEFAULT_DATA_DIR, DEFAULT_DATASET_FILE, RESIZE_WIDTH, RESIZE_HEIGHT
 
 class DataSetCreate:
     def __init__(self, directory : str = DEFAULT_DATA_DIR, filename : str = DEFAULT_DATASET_FILE):
@@ -39,15 +39,17 @@ class DataSetCreate:
             for img_path in tqdm(os.listdir(os.path.join(self.directory, d)),
                                  desc = f"Processing images for {d}"):
                 img = cv2.imread(os.path.join(self.directory, d, img_path))
-                img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Converts the image into rgb
-        
-                results = HANDS.process(img_rgb)  # process and create the finded landmarks
+                img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-                if results.multi_hand_landmarks:  # Check if a hand is detected
-                    data_tuple = process_img(results)  # Process the image
-                    
-                    self.data.append(data_tuple[0])  # Catch all the cordinates
-                    self.labels.append(d)  # Catch directory
+                # Rescaled the image
+                re_img = cv2.resize(img_gray, (RESIZE_WIDTH, RESIZE_HEIGHT))
+                norm_img = re_img / 255.0  # Rescale the values from 0 to 1
+
+                # Append the data
+                self.data.append(np.array(norm_img))
+                self.labels.append(d)
+                
+
                     
             
 

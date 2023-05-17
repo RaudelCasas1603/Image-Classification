@@ -9,8 +9,8 @@ from tqdm import tqdm
 from . import *
 
 class Collector:
-    def __init__(self, directory : str = DEFAULT_DATA_DIR, amount_classes : int = DEFAULT_AMOUNT_OF_SIGNS,
-                 amount_pics : int = DATA_SIZE, device : int = DEFAULT_DEVICE, classes : dict = ALPHABET_DICT):
+    def __init__(self, classes : dict, amount_classes : int, directory : str = DEFAULT_DATA_DIR,
+                 amount_pics : int = DATA_SIZE, device : int = DEFAULT_DEVICE):
         self.directory = directory
         self.amount_classes = amount_classes
         self.amount_pics = amount_pics
@@ -36,10 +36,9 @@ class Collector:
             tqdm.write('Ready to collect data for sign {} in {}'.format(self.classes[i], directory))
             self._create_directory(directory)  # Create the directory
             
-            done = False
             while True:
                 ret, frame = self.cam.read()
-                line1 = "Ready? To collect the sign:"
+                line1 = "Ready? To collect the classification:"
                 line2 = f"\"{self.classes[i]}\""
                 line3 = "Press \"ENTER\" to start!"
 
@@ -76,7 +75,8 @@ class Collector:
                 cv2.imshow('frame', frame)
                 cv2.waitKey(25)
                 cv2.imwrite(os.path.join(self.directory, str(self.classes[i]), '{}.jpg'.format(c)), frame)
-            tqdm.write('Data for sign {} in {}. Collected!'.format(self.classes[i], directory))
+                
+            tqdm.write('Data for class {} in {}. Collected!'.format(self.classes[i], directory))
             
         self._shutdown_device()
         

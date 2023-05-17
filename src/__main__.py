@@ -2,11 +2,9 @@ import argparse
 import json
 
 # Import the modules
-from .dataset import Collector, DataSetCreate, ALPHABET_DICT
+from .dataset import Collector, DataSetCreate
 from .model import Model
 from .features import Transcripter
-
-sign_map_dict = ALPHABET_DICT
 
 def main():
     parser = argparse.ArgumentParser()
@@ -35,10 +33,10 @@ def main():
     )
 
     parser.add_argument(
-        "-s", "--signs",
+        "-c", "--classes",
         nargs = '?',
         metavar="PATH",
-        help = "The json file with each sign to classify."
+        help = "The json file with the labels to classify."
     )
 
     parser.add_argument(
@@ -78,11 +76,11 @@ def main():
     contex = {}
     # Parse the arguments
     if args.command == "collect-data":
-        if args.signs:
-            # Load the new signs
-            sign_map_dict = json.load(open(args.signs))
-            contex["classes"] = sign_map_dict
-            contex["amount_classes"] = len(sign_map_dict)
+        # Load the new classes
+        class_map_dict = json.load(open(args.classes))
+        contex["classes"] = class_map_dict
+        contex["amount_classes"] = len(class_map_dict)
+        
         if args.amount_pictures:
             contex["amount_pics"] = args.amount_pictures
         if args.directory:
@@ -123,10 +121,10 @@ def main():
         if args.file_model:
             contex["modelfile"] = args.file_model
 
-        if args.signs:          # If you have custom signs
-            # Load the new signs
-            sign_map_dict = json.load(open(args.signs))
-            contex["classes"] = sign_map_dict
+        if args.classes:          # If you have custom classes
+            # Load the new classes
+            class_map_dict = json.load(open(args.classes))
+            contex["classes"] = class_map_dict
 
         if args.webcam:
             contex["device"] = args.webcam

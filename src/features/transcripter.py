@@ -1,15 +1,14 @@
 from src.model import DEFAULT_MODEL_FILE, load_model
 import sys
-from src.dataset import MP_HANDS, MP_DRAWING, MP_DRAWING_STYLE, HANDS, Collector
 import cv2
 
-from src.dataset import ALPHABET_DICT, DEFAULT_DEVICE
-from src.dataset.process import process_img
+from src.dataset import DEFAULT_DEVICE, RESIZE_WIDTH, RESIZE_HEIGHT
 import numpy as np
+from src.dataset import Collector
 
 class Transcripter(Collector):
-    def __init__(self, modelfile : str =  DEFAULT_MODEL_FILE, stdout : int = sys.stdout,
-                 classes : dict = ALPHABET_DICT, device : int = DEFAULT_DEVICE):
+    def __init__(self, classes : dict, modelfile : str =  DEFAULT_MODEL_FILE,
+                 stdout : int = sys.stdout, device : int = DEFAULT_DEVICE):
         
         self.model = load_model(modelfile)
         self.model.verbose = 0  # Remove the verbose
@@ -24,35 +23,24 @@ class Transcripter(Collector):
         prev_label = None
         while True:
             ret, frame = self.cam.read()
-            
             H, W, _ = frame.shape
-            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            results = HANDS.process(frame_rgb)
 
-            if results.multi_hand_landmarks:
-                data, x_min, y_min, x_max, y_max = process_img(results)  # Fetcht the data
-                
-                prediction = self.model.predict([np.asarray(data).reshape(-1, 84, 1)], verbose = 0)
-                prediction_index_label = np.argmax(prediction, axis = 1)[0]
-                predicted_label = self.classes[prediction_index_label]
-                
-                # Wen detectes something different
-                if prev_label != predicted_label:
-                    print(predicted_label, file = self.stdout, end='')  # Print the transcripted
-                    prev_label = predicted_label
+            # Rescaled the image
+            img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            re_img = cv2.resize(img_gray, (RESIZE_WIDTH, RESIZE_HEIGHT))
+            norm_img = re_img / 255.0  # Rescale the values from 0 to 1
+            
+            data = np.array(norm_img)  # Get the data
+            # Reshape the input data to add the channel dimension
+            data = np.reshape(data, (-1, RESIZE_WIDTH, RESIZE_HEIGHT, 1))
+            prediction = self.model.predict(data, verbose = 0)
+            prediction_index_label = np.argmax(prediction, axis = 1)[0]
+            predicted_label = self.classes[prediction_index_label]
+                        
+            cv2.putText(frame, predicted_label, (int(H / 4), int(W / 4)),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
+                        cv2.LINE_AA)
 
-                # Mark the detected prediction
-                x1 = int(x_min * W) - 10
-                y1 = int(y_min * H) - 10
-                
-                x2 = int(x_max * W) - 10
-                y2 = int(y_max * H) - 10
-
-                cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 4)
-                    
-                cv2.putText(frame, predicted_label, (x1, y1 - 10),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1.3, (0, 255, 0), 3,
-                            cv2.LINE_AA)
 
             cv2.imshow('frame', frame)
             

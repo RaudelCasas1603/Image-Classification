@@ -7,8 +7,7 @@ import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 
 import numpy as np
-from . import DEFAULT_MODEL_FILE, DEFAULT_DATASET_FILE
-from collections import Counter
+from . import DEFAULT_MODEL_FILE, DEFAULT_DATASET_FILE, IMG_WIDTH, IMG_HEIGHT
 import pdb                      # For debuggin
 
 # Maps each label to a single number with this we can perfeclty map outputs
@@ -38,31 +37,37 @@ class Model:
         for label in labels:
             labels_output.append(self.labels_map[label])
             
-        # Reshape data to have the input shape (84, 1)
-        self.data = np.asarray(data_dict['data']).reshape(-1, 84, 1)
+
+        # Build the input and output array
+        self.data = np.asarray(data_dict['data'])
         self.data_output = np.asarray(labels_output)
 
         # Create the CNN model
         self.model = models.Sequential()
-        self.model.add(layers.Flatten(input_shape = (84, 1))) # Input layer
         
-        self.model.add(layers.Dense(84, activation = 'relu'))  
-        self.model.add(layers.Dense(n_output_neurons * 3, activation = "relu"))
-        self.model.add(layers.Dense(n_output_neurons * 2, activation = "relu"))
+        self.model.add(layers.Conv2D(IMG_HEIGHT, (3, 3), activation = "relu",
+                                     input_shape = (IMG_WIDTH, IMG_HEIGHT, 1)))  # Input layer
+        self.model.add(layers.MaxPool2D((2, 2)))
+        self.model.add(layers.Conv2D(IMG_HEIGHT, 1, activation = "relu"))
+        self.model.add(layers.MaxPool2D((2, 2)))
         
+        # Then classify
+        self.model.add(layers.Flatten())  # squizzy to one dimension
+        self.model.add(layers.Dense(n_output_neurons * 20, activation = 'relu'))
         self.model.add(layers.Dense(n_output_neurons, activation = "softmax"))  # Output layer
 
 
-
     def train(self):
+        # pdb.set_trace()
         # Optimze with adam and loss sparce categorlical crossentropy
-        self.model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+        self.model.compile(optimizer='adam', loss='sparse_categorical_crossentropy',
+                           metrics=['accuracy'])
         self.model.summary()    # Print the model summary
 
         self.x_train, self.x_test, self.y_train, self.y_test = \
             train_test_split(self.data, self.data_output, shuffle = True, test_size = 0.3)
 
-        self.model.fit(self.x_train, self.y_train, epochs = 20, batch_size = 32)
+        self.history = self.model.fit(self.x_train, self.y_train, epochs = 10, batch_size = 32)
 
     def test(self):
         # pdb.set_trace()
