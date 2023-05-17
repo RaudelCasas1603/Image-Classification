@@ -1,5 +1,4 @@
 import pickle
-
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
@@ -8,10 +7,8 @@ import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 
 import numpy as np
-
 from . import DEFAULT_MODEL_FILE, DEFAULT_DATASET_FILE
 from collections import Counter
-
 import pdb                      # For debuggin
 
 # Maps each label to a single number with this we can perfeclty map outputs
@@ -23,8 +20,6 @@ def build_map_label(lst):
             dic[item] = index_number
             index_number += 1
     return dic
-
-
 
 class Model:
     def __init__(self, dataset : str = DEFAULT_DATASET_FILE, modelfile = DEFAULT_MODEL_FILE):
@@ -57,7 +52,7 @@ class Model:
         
         self.model.add(layers.Dense(n_output_neurons, activation = "softmax"))  # Output layer
 
-        # The model should return [1.0, 0.0, ..., 0.0]  depending on the label
+
 
     def train(self):
         # Optimze with adam and loss sparce categorlical crossentropy
@@ -72,6 +67,7 @@ class Model:
     def test(self):
         # pdb.set_trace()
         y_predict = np.argmax(self.model.predict(self.x_test), axis = 1)
+        # The model should return [1.0, 0.0, ..., 0.0]  depending on the label and get the index
         score = accuracy_score(y_predict, self.y_test)
         
         print('{}% of samples were classified correctly !'.format(score * 100))
