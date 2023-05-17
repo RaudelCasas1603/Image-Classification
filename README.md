@@ -9,7 +9,7 @@
 * [References](https://github.com/RaudelCasas1603/Monky-Detection-#references)
 
 # Frame Recognition Video
-The Frame Recognition Video project is a Python-based application that leverages the [OpenCV](https://github.com/opencv/opencv-python) library and convolutional neural networks (CNNs) to perform advanced image classification tasks. It is designed to capture and preprocess video frames, which are then used as inputs for a neural network trained on a labeled image dataset.
+The Frame Recognition Video project is a Python-based application that utilizes the [OpenCV](https://github.com/opencv/opencv-python) library for capturing and preprocessing video frames. It also incorporates pre-built convolutional neural networks (CNNs) from [TensorFlow](https://github.com/tensorflow/tensorflow), a popular deep learning framework, to perform advanced image classification tasks.
 
 # How to install it?
 To install Sign Language Detection application, follow these steps:
