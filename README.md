@@ -1,12 +1,12 @@
 # Table of Contents
-* [Description](https://github.com/RaudelCasas1603/Monky-Detection-#sign-language-detection)
-* [How to install it?](https://github.com/RaudelCasas1603/Monky-Detection-#how-to-install-it)
-* [How to train it?](https://github.com/RaudelCasas1603/Monky-Detection-#how-to-train-it)
-   * [To collect your own data](https://github.com/RaudelCasas1603/Monky-Detection-#to-collect-your-own-data)
-   * [To build your own dataset](https://github.com/RaudelCasas1603/Monky-Detection-#to-build-your-own-dataset)
-* [Examples](https://github.com/RaudelCasas1603/Monky-Detection-#Examples)
-   * [Video example](https://github.com/RaudelCasas1603/Monky-Detection-#video-example) 
-* [References](https://github.com/RaudelCasas1603/Monky-Detection-#references)
+* [Description](https://github.com/RaudelCasas1603/Image-Classification#frame-recognition-video)
+* [How to install it?](https://github.com/RaudelCasas1603/Image-Classification#how-to-install-it)
+* [How to train it?](https://github.com/RaudelCasas1603/Image-Classification#how-to-train-it)
+   * [To collect your own data](https://github.com/RaudelCasas1603/Image-Classification#to-collect-your-own-data)
+   * [To build your own dataset](https://github.com/RaudelCasas1603/Image-Classification#to-build-your-own-dataset)
+* [Examples](https://github.com/RaudelCasas1603/Image-Classification#examples)
+   * [Video example](https://github.com/RaudelCasas1603/Image-Classification#video-example) 
+* [References](https://github.com/RaudelCasas1603/Image-Classification#references)
 
 # Frame Recognition Video
 The Frame Recognition Video project is a Python-based application that utilizes the [OpenCV](https://github.com/opencv/opencv-python) library for capturing and preprocessing video frames. It also incorporates pre-built convolutional neural networks (CNNs) from [TensorFlow](https://github.com/tensorflow/tensorflow), a popular deep learning framework, to perform advanced image classification tasks.
@@ -87,12 +87,21 @@ Firstly make sure that you have collected your data, then to build your own data
 5. The command will start building the dataset based on the provided arguments. It will process the images from the specified data directory and generate the dataset file.
 6. Once the dataset is built, you will see the message **"Dataset built."** printed in the terminal.
 
-## Download our own dataset
-blah blah not avaiable yet >:|
-
 ## To train the CNN
-
-
+1. Open your terminal or command prompt.
+2. Navigate to the directory where your environment is located. For example:
+   ```shell
+   cd /path/to/your/env/sld
+   ```
+3. Activate the virtual environment if you have created one (optional):
+   ```shell
+   source env/bin/activate  # On macOS and Linux
+   .\env\Scripts\activate  # On Windows
+   ```
+4. Run the command with the **train**:
+   ```shell
+   fmr train
+   ```
 
 # Examples
 ## Video example   
