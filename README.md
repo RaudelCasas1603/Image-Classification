@@ -55,7 +55,7 @@ python environment, then follow the next steps:
    ```
 4. Run the command with the **collect-data** command and specify the desired arguments:
    ```shell
-    sld collect-data -n 100 -d directory-to-store-data/ -s signs.json
+    fmr collect-data -n 100 -d directory-to-store-data/ -s signs.json
    ```
    * The **-n 100** flag is optional and specifies that you want to generate 100 pictures per class or sign. By default, the program is programmed to take at least 1000 pictures.
    * The **-d directory-to-store-data/** flag is optional and sets the directory where the collected data will be stored. Replace directory-to-store-data/ with the actual directory path. If the directory doesn't exist, it will be created. By default, it uses the data/ directory.
@@ -80,7 +80,7 @@ Firstly make sure that you have collected your data, then to build your own data
    ```
 4. Run the command with the **build-dataset** command and specify the desired arguments:
    ```shell
-   sld build-dataset -f dataset.pickle -d data/
+   fmr build-dataset -f dataset.pickle -d data/
    ```
    * **-f dataset.pickle** specifies the output filename of the built dataset. Replace dataset.pickle with the **desired filename**. By default, **data.pickle** is the output dataset filename.
    * **-d data/** sets the directory where the raw data is stored. Replace **data/** with the actual directory. By default, the raw data is stored in the data/ directory.
