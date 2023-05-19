@@ -105,10 +105,12 @@ Firstly make sure that you have collected your data, then to build your own data
    ```
 
 # Examples
+I trained to recognize me in real time at my desk :).
 ## Video example   
 
+https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/62b20e7d-a684-40e5-a516-396000509e1b
 
-## Transcription Output
+
 
 
 # References
