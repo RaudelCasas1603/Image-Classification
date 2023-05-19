@@ -60,7 +60,7 @@ python environment, then follow the next steps:
    ```
    * The **-n 100** flag is optional and specifies that you want to generate 100 pictures per class or sign. By default, the program is programmed to take at least 1000 pictures.
    * The **-d directory-to-store-data/** flag is optional and sets the directory where the collected data will be stored. Replace directory-to-store-data/ with the actual directory path. If the directory doesn't exist, it will be created. By default, it uses the data/ directory.
-   * The **-c classes.json** flag is optional and specifies a JSON file with each image to classify.
+   * The **-c classes.json** flag specifies a JSON file with each leabel to classify.
    
 5. The command will start collecting the data based on the provided arguments. It will generate pictures for each class and store them in the specified folder.
 
