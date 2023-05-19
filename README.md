@@ -55,7 +55,7 @@ python environment, then follow the next steps:
    ```
 4. Run the command with the **collect-data** command and specify the desired arguments:
    ```shell
-    fmr collect-data -n 100 -d directory-to-store-data/ -s signs.json
+    fmr collect-data -n 100 -d directory-to-store-data/ -c classes.json
    ```
    * The **-n 100** flag is optional and specifies that you want to generate 100 pictures per class or sign. By default, the program is programmed to take at least 1000 pictures.
    * The **-d directory-to-store-data/** flag is optional and sets the directory where the collected data will be stored. Replace directory-to-store-data/ with the actual directory path. If the directory doesn't exist, it will be created. By default, it uses the data/ directory.
