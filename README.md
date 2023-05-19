@@ -4,6 +4,7 @@
 * [How to train it?](https://github.com/RaudelCasas1603/Image-Classification#how-to-train-it)
    * [To collect your own data](https://github.com/RaudelCasas1603/Image-Classification#to-collect-your-own-data)
    * [To build your own dataset](https://github.com/RaudelCasas1603/Image-Classification#to-build-your-own-dataset)
+   * [To train the CNN](https://github.com/RaudelCasas1603/Image-Classification#to-train-the-cnn)
 * [Examples](https://github.com/RaudelCasas1603/Image-Classification#examples)
    * [Video example](https://github.com/RaudelCasas1603/Image-Classification#video-example) 
 * [References](https://github.com/RaudelCasas1603/Image-Classification#references)
