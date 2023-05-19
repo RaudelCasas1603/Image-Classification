@@ -67,9 +67,9 @@ class Collector:
                 if cv2.waitKey(25) == 13:  # 13 = jump line \n = Enter key
                     break
                 
-
             # Start taking a lot of picutres
-            for c in tqdm(range(self.amount_pics), leave = False,
+            prev_n_images = len(os.listdir(os.path.join(self.directory, str(self.classes[i]))))
+            for c in tqdm(range(prev_n_images, self.amount_pics + prev_n_images), leave = False,
                           desc = "Collecting data for sign {} in {}".format(self.classes[i], directory)):
                 ret, frame = self.cam.read()
                 cv2.imshow('frame', frame)

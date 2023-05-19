@@ -48,7 +48,7 @@ class Model:
         self.model.add(layers.Conv2D(IMG_HEIGHT, (3, 3), activation = "relu",
                                      input_shape = (IMG_WIDTH, IMG_HEIGHT, 1)))  # Input layer
         self.model.add(layers.MaxPool2D((2, 2)))
-        self.model.add(layers.Conv2D(IMG_HEIGHT, 1, activation = "relu"))
+        self.model.add(layers.Conv2D(IMG_HEIGHT, 3, activation = "relu"))
         self.model.add(layers.MaxPool2D((2, 2)))
         
         # Then classify
@@ -85,8 +85,17 @@ class Model:
         f.close()
 
 
-# load the model
-def load_model(modelfile : str = DEFAULT_MODEL_FILE):
-    model_dict = pickle.load(open(modelfile, "rb"))
-    return model_dict['model']  # Load the modelxo
+
+
+# LoadModel: To load the model from a file
+class LoadModel(Model):
+    def __init__(self, modelfile : str):
+        model_dict = pickle.load(open(modelfile, "rb"))
+
+        # Load the model
+        self.model = model_dict["model"]
+
+
+    def fine_tuning(self):
+        pass
     
