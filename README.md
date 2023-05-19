@@ -46,7 +46,7 @@ python environment, then follow the next steps:
 1. Open your terminal or command prompt.
 2. Navigate to the directory where your eviroment is located. For example:
    ```shell
-   cd  /path/to/your/Image-Classification
+   cd  /path/to/your/env
    ```
 3. Activate the virtual environment if you have created one (optional):
    ```shell
@@ -71,7 +71,7 @@ Firstly make sure that you have collected your data, then to build your own data
 1. Open your terminal or command prompt.
 2. Navigate to the directory where your environment is located. For example:
    ```shell
-   cd /path/to/your/env/sld
+   cd /path/to/your/env
    ```
 3. Activate the virtual environment if you have created one (optional):
    ```shell
@@ -91,14 +91,14 @@ Firstly make sure that you have collected your data, then to build your own data
 1. Open your terminal or command prompt.
 2. Navigate to the directory where your environment is located. For example:
    ```shell
-   cd /path/to/your/env/sld
+   cd /path/to/your/env
    ```
 3. Activate the virtual environment if you have created one (optional):
    ```shell
    source env/bin/activate  # On macOS and Linux
    .\env\Scripts\activate  # On Windows
    ```
-4. Run the command with the **train**:
+4. Run the command with the **train** flag:
    ```shell
    fmr train
    ```
