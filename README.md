@@ -121,7 +121,7 @@ Firstly make sure that you have collected your data, then to build your own data
    ```
     * The **-c classes.json** flag specifies a JSON file with each leabel to classify.
    
-   Using this command, you will be able to obtain transcriptions for each label based on what the CNN sees.
+   Using this command, you will be able to obtain transcriptions for each label based on what the **CNN** sees.
 
 # Examples
 I trained to recognize me in real time at my desk :).
