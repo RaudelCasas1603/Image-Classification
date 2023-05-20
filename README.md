@@ -103,6 +103,23 @@ Firstly make sure that you have collected your data, then to build your own data
    ```shell
    fmr train
    ```
+# Test a simple demo
+1. Open your terminal or command prompt.
+2. Navigate to the directory where your environment is located. For example:
+   ```shell
+   cd /path/to/your/env
+   ```
+3. Activate the virtual environment if you have created one (optional):
+   ```shell
+   source env/bin/activate  # On macOS and Linux
+   .\env\Scripts\activate  # On Windows
+   ```
+4. Run the command with the **transcript** command and specify the desired arguments:
+   ```shell
+   fmr transcript -c classes.json
+   ```
+    * The **-c classes.json** flag specifies a JSON file with each leabel to classify.
+
 
 # Examples
 I trained to recognize me in real time at my desk :).
