@@ -104,6 +104,29 @@ Firstly make sure that you have collected your data, then to build your own data
    ```shell
    fmr train
    ```
+5. To initiate model for retraining, you can load it by specifying the **-m** flag along with the **your_model.pickle** file:
+  ```shell
+  fmr train -m your_model.pickle
+  ```
+  By default, the program utilizes the file named **model.pickle**.
+   
+## To Fine-Tuning the CNN
+1. Open your terminal or command prompt.
+2. Navigate to the directory where your environment is located. For example:
+   ```shell
+   cd /path/to/your/env
+   ```
+3. Activate the virtual environment if you have created one (optional):
+   ```shell
+   source env/bin/activate  # On macOS and Linux
+   .\env\Scripts\activate  # On Windows
+   ```
+4. Execute the command with the tune option, and if desired, use the optional flag **-m** to specify a specific model:
+   ```shell
+   fmr tune -m specific_model.pickle
+   ```
+   **Note**: Replace **specific_model** with the name of the **desired model** you want to select, by default, the program utilizes the file named **model.pickle**.
+   
 # Test a simple Demo
 1. Open your terminal or command prompt.
 2. Navigate to the directory where your environment is located. For example:
