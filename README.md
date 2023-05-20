@@ -104,7 +104,7 @@ Firstly make sure that you have collected your data, then to build your own data
    ```shell
    fmr train
    ```
-# Test a simple demo
+# Test a simple Demo
 1. Open your terminal or command prompt.
 2. Navigate to the directory where your environment is located. For example:
    ```shell
