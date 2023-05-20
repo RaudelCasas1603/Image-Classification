@@ -3,14 +3,13 @@
 * Store all the generated data into compressed file [ ]
 * Try to make it works with n hands on the video [X]
 * Create a simple command line interface [X]
-* Find a way to upload the data fetch the data [ ]
-* Change the project name [ ]
+* Change the project name [X]
 * Create a few testscases [X]
 ---- 2023/05/16 ----
 * Recive a custom imput sign as a json and passed through the collector class [X]
 * Test the dataset generator [ ]
 * Test the main interface [ ]
-* Create some exception to hanled the files [ ]
+* Create some exceptions to hanled the files [ ]
 * Built a better code for the command line interface [ ]
 * Create another module that controls the cammera [ ]
 

@@ -15,7 +15,6 @@ class Transcripter(Collector):
         self.device = device
         self.classes = classes
         self.stdout = stdout
-
     
     def transcript(self):
         self._initialize_device()
