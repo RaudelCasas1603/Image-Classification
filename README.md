@@ -5,6 +5,7 @@
    * [To collect your own data](https://github.com/RaudelCasas1603/Image-Classification#to-collect-your-own-data)
    * [To build your own dataset](https://github.com/RaudelCasas1603/Image-Classification#to-build-your-own-dataset)
    * [To train the CNN](https://github.com/RaudelCasas1603/Image-Classification#to-train-the-cnn)
+   * [To fine tuning the CNN](https://github.com/RaudelCasas1603/Image-Classification#to-fine-tuning-the-cnn)
 * [Test a simple Demo](https://github.com/RaudelCasas1603/Image-Classification#test-a-simple-demo)
 * [Examples](https://github.com/RaudelCasas1603/Image-Classification#examples)
    * [Video example](https://github.com/RaudelCasas1603/Image-Classification#video-example) 
