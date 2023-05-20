@@ -11,7 +11,7 @@
 * [References](https://github.com/RaudelCasas1603/Image-Classification#references)
 
 # Frame Recognition Video
-The Frame Recognition Video project is a Python-based application that utilizes the [OpenCV](https://github.com/opencv/opencv-python) library for capturing and preprocessing video frames. It also incorporates pre-built convolutional neural networks (CNNs) from [TensorFlow](https://github.com/tensorflow/tensorflow), a popular deep learning framework, to perform advanced image classification tasks.
+The Frame Recognition Video project is a Python-based application that utilizes the [OpenCV](https://github.com/opencv/opencv-python) library for capturing and preprocessing video frames. It also incorporates pre-built convolutional neural networks **(CNNs)** from [TensorFlow](https://github.com/tensorflow/tensorflow), a popular deep learning framework, to perform advanced image classification tasks.
 
 # How to install it?
 To install Frame Recognition Video application, follow these steps:
