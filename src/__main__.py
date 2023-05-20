@@ -1,9 +1,10 @@
 import argparse
 import json
+import os
 
 # Import the modules
 from .dataset import Collector, DataSetCreate
-from .model import Model
+from .model import Model, LoadModel, DEFAULT_MODEL_FILE
 from .features import Transcripter
 
 def main():
@@ -12,7 +13,7 @@ def main():
     # Add the command argument
     parser.add_argument(
         "command",
-        choices=["collect-data", "build-dataset", "train", "transcript"],
+        choices=["collect-data", "build-dataset", "train", "transcript", "tune"],
         help="The command to execute. Choose from 'collect-data', 'build-dataset', 'train', or 'transcript'."
     )
     
@@ -55,8 +56,7 @@ def main():
         help = "The output file where the dataset will be sotred."
     )
 
-    # Flags for the train command
-
+    # Flags for the train 
     parser.add_argument(
         "-m", "--file-model",
         nargs = '?',
@@ -91,7 +91,7 @@ def main():
         # Unpack the configuration 
         collector = Collector(**contex)
         collector.start()       # Start collecting the data
-        print("Data collection completed.")
+        print("Data collection completed")
         
     elif args.command == "build-dataset":
         if args.file_dataset:
@@ -104,19 +104,44 @@ def main():
         dataset = DataSetCreate(**contex)
         dataset.build()
         dataset.save()
-        print("Dataset builded.")
+        print("Dataset builded")
         
     elif args.command == "train":
         if args.file_model:
             contex["modelfile"] = args.file_model
+            
         if args.file_dataset:
             contex["dataset"] = args.file_dataset
-        model = Model(**contex)
+
+        if os.path.exist(contex["modelfile"]):
+            model = LoadModel(contex["modelfile"])  #  To retrain the model
+        else:
+            model = Model(**contex)
+            
         model.train()
         model.test()
         model.save()
         print("Model trained")
+
+    elif args.command == "tune":  # To tune the model with better performance
+
+        if args.file_model:
+            contex["modelfile"] = args.file_model
+            
+        if args.file_dataset:
+            contex["dataset"] = args.file_dataset
+
+
+        if not os.path.exists(DEFAULT_MODEL_FILE \
+                              if not "modelfile" in contex \
+                              else contex["modelfile"]):
+            raise Exception("To tune a model you must to have a model.pickle file or something")
         
+        model = LoadModel(**contex)
+        model.fine_tuning()     # Do the tuning stuff
+        model.test()
+        model.save()
+        print("Model tuned")
     elif args.command == "transcript":
         if args.file_model:
             contex["modelfile"] = args.file_model

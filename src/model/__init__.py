@@ -6,4 +6,4 @@ from src.dataset import RESIZE_WIDTH as IMG_WIDTH, RESIZE_HEIGHT as IMG_HEIGHT
 
 DEFAULT_MODEL_FILE = "model.pickle"
 
-from .model import Model, load_model
+from .model import Model, LoadModel

@@ -6,12 +6,11 @@ from src.dataset import DEFAULT_DEVICE, RESIZE_WIDTH, RESIZE_HEIGHT
 import numpy as np
 from src.dataset import Collector
 
-
 class Transcripter(Collector):
     def __init__(self, classes : dict, modelfile : str =  DEFAULT_MODEL_FILE,
                  stdout : int = sys.stdout, device : int = DEFAULT_DEVICE):
         
-        self.model = LoadModel(modelfile)  # Load the model
+        self.model = LoadModel(modelfile = modelfile)  # Load the model
         self.model.verbose = 0  # Remove the verbose
         self.device = device
         self.classes = classes
