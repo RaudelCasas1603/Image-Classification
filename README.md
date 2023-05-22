@@ -149,11 +149,18 @@ Firstly make sure that you have collected your data, then to build your own data
 
 # Examples
 I trained to recognize me in real time at my desk :).
+## The summary of the model
+![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/0cf2f46c-91ee-4982-8326-aed85984ec24)
+
+## The trained output
+![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/c63508c6-e7cd-4e4c-aba7-f411396b55f4)
+
 ## Video example   
 
 https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/62b20e7d-a684-40e5-a516-396000509e1b
 
-
+## This is a simple output of the transcription
+![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/4cf8bd24-f7cf-4b65-86ff-397b4361c2cc)
 
 
 # References
