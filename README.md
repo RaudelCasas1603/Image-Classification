@@ -150,7 +150,7 @@ Firstly make sure that you have collected your data, then to build your own data
 # Examples
 I trained to recognize me in real time at my desk :).
 ## The summary of the model
-![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/0cf2f46c-91ee-4982-8326-aed85984ec24)
+![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/d4960ec3-09ac-4bfd-acaf-a20388aec25c)
 
 ## The trained output
 ![image](https://github.com/RaudelCasas1603/Image-Classification/assets/66882463/c63508c6-e7cd-4e4c-aba7-f411396b55f4)
